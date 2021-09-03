@@ -10,7 +10,5 @@ MCP_RET _mcp_puzzle_parsemsg(struct CanFrame *frame, struct Mailbox *parsed)
         parsed->txbnsidl = (parsed->txbnsidl & 0x03) | ((parsed->txbnsidl << 3) & 0xE0) | 0x08;
         parsed->txbnsidh = (uint8_t)frame->can_id >> 21;
         parsed->is_obsolote = fresh_frame;
-    }else{
-        parsed->
     }
 }
