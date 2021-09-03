@@ -9,14 +9,7 @@ typedef enum{
 	MCP_PARSER_FAIL
 }MCP_RET;
 
-MCP_RET _mcp_parser(struct CanMsg *msg, struct Mailbox *parsed)
-{
-	if(msg->exide == 1){
-			
-	}else{
-	
-	}
-}
+MCP_RET _mcp_puzzle_parsemsg(struct CanFrame *, struct Mailbox *);
 
 
 #endif

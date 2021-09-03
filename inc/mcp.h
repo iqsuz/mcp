@@ -2,17 +2,17 @@
 #define _MCP_H_
 
 #include <stdint.h>
+	typedef enum{standard_id, extended_id}exide_t;
 
-	struct CanMsg{
+	struct CanFrame{
 		uint32_t can_id;
-		uint8_t exide;
+		exide_t exide;
 		uint8_t rtr;
 		uint8_t dlc;
 		uint8_t can_msg[8]; 
 	};
 	
-	
-	typedef enum{msg_obsolote, msg_non_obsoloete}IsObsolote_t;
+	typedef enum{obsolete_frame, fresh_frame}IsObsolote_t;
 	
 	struct Mailbox{
 		uint8_t txbnsidh;
