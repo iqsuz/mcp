@@ -3,13 +3,19 @@
 	
 #include "mcp.h"
 
-typedef enum{
-	MCP_FAIL,
-	MCP_OK,
-	MCP_PARSER_FAIL
-}MCP_RET;
+/*
+@brief 
+This function parses given CAN frame according to 
+MCP2515 TX registers.
 
-MCP_RET _mcp_puzzle_parsemsg(struct CanFrame *, struct Mailbox *);
+@param struct CANFrame is an entire CAN frame.
+@param struct Mailbox is a piece of memory that holds
+parsed data.
+*/
+MCP_RET _mcp_puzzle_parseframe(CANFrame_t *, Mailbox_t *);
 
+
+
+MCP_RET _mcp_puzzle_concantenateframe(Mailbox_t *parsed, CANFrame_t *frame);
 
 #endif
