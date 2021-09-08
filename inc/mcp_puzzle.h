@@ -13,9 +13,6 @@ MCP2515 TX registers.
 parsed data.
 */
 MCP_RET _mcp_puzzle_parseframe(CANFrame_t *, Mailbox_t *);
-
-
-
-MCP_RET _mcp_puzzle_concantenateframe(Mailbox_t *parsed, CANFrame_t *frame);
+MCP_RET _mcp_puzzle_concantenateframe(Mailbox_t *, CANFrame_t *);
 
 #endif

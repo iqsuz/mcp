@@ -30,14 +30,19 @@ static void _mcp_bitmodify(const uint8_t addr, const uint8_t mask, const uint8_t
 
 MCP_RET mcp_send(const MCP_TXBn tx_buff, const Mailbox_t *mailbox)
 {
+    int base_addr = _FIND_BASE_REGISTER(tx_buff);
+    
     if(mcp_is_txavailable(tx_buff) != MCP_OK)
         return MCP_TX_BUSY;
 
     if(mailbox->dlc > 8 && mailbox->dlc < 0)
         return MCP_DATA_LEN_FAIL;
     
-    _mcp_cs_low();
-
+    mcp_writeregister((base_addr + 0x01), &(mailbox->sidh));
+    mcp_writeregister((base_addr + 0x02), &(mailbox->sidl));
+    mcp_writeregister((base_addr + 0x03), &(mailbox->eid8));
+    mcp_writeregister((base_addr + 0x04), &(mailbox->eid0));
+    mcp_writeregister((base_addr + 0x05), &(mailbox->dlc));
 
 }
 
